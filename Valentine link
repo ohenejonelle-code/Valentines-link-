@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? 💙</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #1e1e2f; /* dark background */
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    color: #fff;
+  }
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #4da6ff; /* blue text */
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  button {
+    padding: 15px 40px;
+    margin: 15px;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  }
+  #yes {
+    background-color: #4da6ff;
+    color: white;
+  }
+  #yes:hover {
+    transform: scale(1.1);
+    background-color: #1a75ff;
+  }
+  #no {
+    background-color: #666;
+    color: white;
+    position: absolute;
+  }
+  .heart {
+    position: absolute;
+    color: #4da6ff;
+    font-size: 24px;
+    animation: float 3s linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-100px) scale(1.2); opacity: 0.8; }
+    100% { transform: translateY(-200px) scale(1); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Will You Be My Valentine? 💙</h1>
+<button id="yes" onclick="showMessage()">Yes 💙</button>
+<button id="no">No 😅</button>
+
+<script>
+  const noBtn = document.getElementById('no');
+  noBtn.addEventListener('mouseenter', () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  });
+  function showMessage() {
+    alert("Yay! 💙 You’re my Valentine! 💙");
+  }
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+    heart.innerText = '💙';
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 3000);
+  }
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
